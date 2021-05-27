@@ -1,10 +1,13 @@
 import './App.css';
 import Component1 from './hocs-test/component1';
+import ClassTick from './tick-tick/classTick';
+import FuntionalTick from './tick-tick/funtionalTick';
 
 function App() {
   return (
     <div>
-      <Component1/>
+      <FuntionalTick/>
+      <ClassTick/>
     </div>
   );
 }
