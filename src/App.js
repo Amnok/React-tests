@@ -1,4 +1,5 @@
 import './App.css';
+import Wrapper from './context/wrapper';
 import Normal from './custom-hooks/normal';
 import WrappingComponent from './error-boundary/wrapping-component';
 import Component1 from './hocs-test/component1';
@@ -11,7 +12,7 @@ import FuntionalTick from './tick-tick/funtionalTick';
 function App() {
   return (
     <div>
-<WrappingComponent/>
+<Wrapper/>
     </div>
   );
 }
