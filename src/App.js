@@ -2,6 +2,7 @@ import './App.css';
 import Wrapper from './context/wrapper';
 import Normal from './custom-hooks/normal';
 import WrappingComponent from './error-boundary/wrapping-component';
+import BasicForm from './formik/basic-form';
 import Component1 from './hocs-test/component1';
 import Component2 from './hocs-test/component2';
 import withLoader from './hocs-test/withLoader';
@@ -12,8 +13,8 @@ import FuntionalTick from './tick-tick/funtionalTick';
 
 function App() {
   return (
-    <div>
-      <UseReducerTest/>
+    <div className='container'>
+      <BasicForm/>
     </div>
   );
 }
