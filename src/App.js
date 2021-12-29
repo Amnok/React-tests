@@ -1,4 +1,6 @@
 import './App.css';
+import React, {useState} from 'react';
+import UserContext from './context/userContext';
 import Wrapper from './context/wrapper';
 import Normal from './custom-hooks/normal';
 import WrappingComponent from './error-boundary/wrapping-component';
@@ -8,6 +10,8 @@ import FormWithYup from './formik/form-with-yup';
 import Component1 from './hocs-test/component1';
 import Component2 from './hocs-test/component2';
 import withLoader from './hocs-test/withLoader';
+import UseContextHook from './hooks/useContextHook';
+import UseEffectHook from './hooks/useEffectHook';
 import UseReducerTest from './hooks/useReducerTest';
 import UseStateHook from './hooks/useStateHook';
 import Multi from './state-tests/multi';
@@ -15,9 +19,12 @@ import ClassTick from './tick-tick/classTick';
 import FuntionalTick from './tick-tick/funtionalTick';
 
 function App() {
+  const [theme, setTheme] = useState(0)
   return (
     <div className='container'>
-      <UseStateHook/>
+      <UserContext.Provider value={{theme, setTheme}}>
+      <UseContextHook/>
+      </UserContext.Provider>
     </div>
   );
 }
