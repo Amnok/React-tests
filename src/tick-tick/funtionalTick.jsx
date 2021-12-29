@@ -4,10 +4,13 @@ export default function FuntionalTick() {
   const [time, setTime] = useState(new Date().toLocaleString());
   useEffect(() => {
     console.log('iside effetc');
-    setInterval(() => {
+    let timeout = setInterval(() => {
       setTime(new Date().toLocaleString());
     }, 1000);
-  }, [time]);
+    return () => {
+      clearInterval(timeout);
+    };
+  }, []);
   return (
     <React.Fragment>
       <div>{time}</div>

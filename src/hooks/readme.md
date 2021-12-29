@@ -1,0 +1,4 @@
+-> reusability (custom hooks)
+-> hooks allows to reuse statefull logic
+-> mutually realted code lies together
+-> same logic in componentDidMount & componentDidUpdate
