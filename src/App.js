@@ -12,18 +12,19 @@ import Component2 from './hocs-test/component2';
 import withLoader from './hocs-test/withLoader';
 import UseContextHook from './hooks/useContextHook';
 import UseEffectHook from './hooks/useEffectHook';
-import UseReducerTest from './hooks/useReducerTest';
+import UseReducerTest from './hooks/useReducerHook';
 import UseStateHook from './hooks/useStateHook';
 import Multi from './state-tests/multi';
 import ClassTick from './tick-tick/classTick';
 import FuntionalTick from './tick-tick/funtionalTick';
+import UseMemoHook from './hooks/useMemoHook';
 
 function App() {
   const [theme, setTheme] = useState(0)
   return (
     <div className='container'>
       <UserContext.Provider value={{theme, setTheme}}>
-      <UseContextHook/>
+      <UseMemoHook/>
       </UserContext.Provider>
     </div>
   );
