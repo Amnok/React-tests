@@ -17,7 +17,7 @@ import UseStateHook from './hooks/useStateHook';
 import Multi from './state-tests/multi';
 import ClassTick from './tick-tick/classTick';
 import FuntionalTick from './tick-tick/funtionalTick';
-import UseMemoHook from './hooks/useMemoHook';
+import SearchUser from './hooks/search-user-app';
 import UseCallbackHook from './hooks/useCallbackHook';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
   return (
     <div className='container'>
       <UserContext.Provider value={{theme, setTheme}}>
-      <UseCallbackHook/>
+      <SearchUser/>
       </UserContext.Provider>
     </div>
   );
