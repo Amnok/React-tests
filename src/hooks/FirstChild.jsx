@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FirstChild = React.memo(({ onClick }) => {
-  console.log('i am called');
-  return <div>This is First Child</div>;
+export const FirstChild = React.memo(({ onClick, firstCounter }) => {
+  console.log('FirstChild is called');
+  return <button onClick={onClick}>Counter is : {firstCounter}</button>;
 });

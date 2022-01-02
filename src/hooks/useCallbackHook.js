@@ -1,25 +1,31 @@
 import React, {useCallback, useState} from 'react'
 import {FirstChild} from './FirstChild'
+import { SecondChild } from './SecondChild';
 
 function UseCallbackHook() {
-    const [counter, setCounter] = useState(0);
-    const [counter2, setCounter2] = useState(0);
-    const onClick = useCallback(() => {
-        setCounter(counter +1)
-    }, [counter])
+    const [firstCounter, setFirstCounter] = useState(0);
+    const [secondCounter, setSecondCounter] = useState(0);
+    
+    // // withcallback
+    // const firstonClick = useCallback(() => {
+    //      setFirstCounter(firstCounter +1)
+    // }, [firstCounter])
 
-    const onClick2 = useCallback(() => {
-        setCounter2(counter2 +1)
-    }, [counter2])
+    // const secondonClick = useCallback(() => {
+    //      setSecondCounter(secondCounter +1)
+    // }, [secondCounter])
+
+    // // without callback
+    const firstonClick =() => {
+        setFirstCounter(firstCounter +1)
+   };
+   const secondonClick = () => {
+        setSecondCounter(secondCounter +1)
+   };
     return (
         <div>
-            <FirstChild onClick={onClick}/>
-            <button onClick={onClick}> 
-            Counter is : {counter}
-            </button>
-            <button onClick={onClick2}> 
-            Counter2 is : {counter2}
-            </button>
+            <FirstChild onClick={firstonClick} firstCounter={firstCounter}/>
+            <SecondChild onClick={secondonClick} secondCounter={secondCounter}/>
         </div>
     )
 }
