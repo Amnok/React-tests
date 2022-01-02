@@ -19,13 +19,24 @@ import ClassTick from './tick-tick/classTick';
 import FuntionalTick from './tick-tick/funtionalTick';
 import SearchUser from './hooks/search-user-app';
 import UseCallbackHook from './hooks/useCallbackHook';
+import HookRouter from './hooks/hooks-router';
+import {
+  Route,
+  Routes
+} from "react-router-dom";
+import Home from './Home';
 
 function App() {
   const [theme, setTheme] = useState(0)
   return (
     <div className='container'>
       <UserContext.Provider value={{theme, setTheme}}>
-      <SearchUser/>
+      <div>
+        <Routes>
+        <Route path="/hooks/*" element={<HookRouter/>}/>
+        <Route path="/" element={<Home/>}/>
+        </Routes>
+      </div>
       </UserContext.Provider>
     </div>
   );
