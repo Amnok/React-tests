@@ -18,13 +18,14 @@ import Multi from './state-tests/multi';
 import ClassTick from './tick-tick/classTick';
 import FuntionalTick from './tick-tick/funtionalTick';
 import UseMemoHook from './hooks/useMemoHook';
+import UseCallbackHook from './hooks/useCallbackHook';
 
 function App() {
   const [theme, setTheme] = useState(0)
   return (
     <div className='container'>
       <UserContext.Provider value={{theme, setTheme}}>
-      <UseMemoHook/>
+      <UseCallbackHook/>
       </UserContext.Provider>
     </div>
   );

@@ -3,26 +3,25 @@ import React, { useMemo, useState } from 'react';
 function UseMemoHook() {
   const [firstCounter, setFirstCounter] = useState(0);
   const [secondCounter, setSecondCounter] = useState(0);
-  const firstMeth = () => {
-    // console.log('first one');
+  const firstOne = () => {
     setFirstCounter(firstCounter + 1);
-    return `hi ${firstCounter}`;
   };
-  const secondMeth = useMemo(() => {
-    console.log('second one');
-    return `hi ${secondCounter}`;
-  }, [secondCounter]);
-  const temp = () => {
-    console.log('last one');
-    return `hi ${secondCounter}`;
+  const secondOne = () => {
+    setSecondCounter(secondCounter + 1);
   };
+  const isEven = () => {
+    console.log('calculating even...');
+    // let i = 0;
+    // while (i < 2000000000) i++;
+    return firstCounter % 2 === 0 ? 'Even' : 'Odd';
+  };
+  const isEvenMemo = useMemo(() => isEven(), [firstCounter]);
   return (
-    <div>
-      {/* {firstMeth()} */}
-      {secondMeth}
-      {temp()}
-      <button onClick={firstMeth}>click to change</button>
-      {/* <button onClick={secondMeth}>second</button> */}
+    <div style={{ margin: '0 auto' }}>
+      <button onClick={firstOne} style={{ margin: '20px' }}>
+        First Counter - {firstCounter} {isEvenMemo}
+      </button>
+      <button onClick={secondOne}>Second Counter - {secondCounter}</button>
     </div>
   );
 }
