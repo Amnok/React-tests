@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export default function UseStateHook() {
   const [isVisible, setisVisible] = useState(false);
   const [data, setData] = useState({ name: 'test', state: 'Delhi', id: '10' });
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h2 style={{ textAlign: 'center' }}>useStateHook</h2>
