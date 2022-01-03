@@ -5,7 +5,7 @@ export default function UseReducerTest() {
     count: 0,
   };
   const reducer = (state = initialState, action) => {
-    const { type, payload } = action;
+    const { type } = action;
     switch (type) {
       case 'INC':
         return {
