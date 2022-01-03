@@ -20,6 +20,11 @@ export function getModules() {
             "id": "4",
             "name": "HOC's",
             "url": "hoc"
+        },
+        {
+            "id": "5",
+            "name": "redux",
+            "url": "redux"
         }
     ]
 }

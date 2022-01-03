@@ -20,6 +20,7 @@ import FuntionalTick from './tick-tick/funtionalTick';
 import SearchUser from './hooks/search-user-app';
 import UseCallbackHook from './hooks/useCallbackHook';
 import HookRouter from './hooks/hooks-router';
+import ReduxRouter from './redux';
 import {
   Route,
   Routes
@@ -34,6 +35,7 @@ function App() {
       <div>
         <Routes>
         <Route path="/hooks/*" element={<HookRouter/>}/>
+        <Route path="/redux/*" element={<ReduxRouter/>}/>
         <Route path="/" element={<Home/>}/>
         </Routes>
       </div>
