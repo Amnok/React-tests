@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function useData(type) {
-  console.log(type);
   const [data, setData] = useState([]);
   useEffect(() => {
     async function getData() {
