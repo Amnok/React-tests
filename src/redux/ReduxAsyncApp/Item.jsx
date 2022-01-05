@@ -13,7 +13,7 @@ function Item({ note, handleRemove }) {
   };
   return (
     <div style={style}>
-      {_.get(note, 'text')}{' '}
+      {_.get(note, 'title')}
       <button onClick={() => handleRemove(note)}>Remove</button>
     </div>
   );
