@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Input from './Input';
 import Item from './Item';
+import { addNote, removeNote } from '../actions/actionCreator';
+import _ from 'lodash';
 
 function ReduxSyncApp() {
-  const [notes, setNotes] = useState(() => {
-    return [
-      { id: 1, text: 'This is first Note' },
-      { id: 2, text: 'This is second Note' },
-      { id: 3, text: 'This is third Note' },
-      { id: 4, text: 'This is fourth Note' },
-    ];
-  });
+  const dispatch = useDispatch();
+  const { notes } = useSelector((state) => ({ notes: _.get(state, 'notes') }));
   function onAdd(text) {
-    setNotes([...notes, { id: notes.length + 1, text }]);
+    const note = { id: notes.length + 1, text };
+    dispatch(addNote(note));
   }
   function handleRemove(noteToRemove) {
-    setNotes(notes.filter((note) => note.id !== noteToRemove.id));
+    dispatch(removeNote(noteToRemove));
   }
   return (
     <div>
       <Input onAdd={onAdd} />
       {notes.map((note) => (
-        <Item note={note} onAdd={onAdd} handleRemove={handleRemove} />
+        <Item
+          key={_.get(note, 'id')}
+          note={note}
+          onAdd={onAdd}
+          handleRemove={handleRemove}
+        />
       ))}
     </div>
   );
