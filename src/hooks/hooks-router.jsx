@@ -7,6 +7,7 @@ import UseCallbackHook from './useCallbackHook';
 import UseContextHook from './useContextHook';
 import UseMemoHook from './useMemoHook';
 import UseReducerHook from './useReducerHook';
+import UseRefHook from './useRefHook';
 import HooksAppRouter from './search-user-app/hooks-app-router';
 
 export default function HooksRouter() {
@@ -19,6 +20,7 @@ export default function HooksRouter() {
         <Route path="/use-context" element={<UseContextHook />}></Route>
         <Route path="/use-memo" element={<UseMemoHook />}></Route>
         <Route path="/use-reducer" element={<UseReducerHook />}></Route>
+        <Route path="/use-ref" element={<UseRefHook />}></Route>
         <Route path="/hooks-app/*" element={<HooksAppRouter />}></Route>
         <Route path="/" element={<Hooks />}></Route>
       </Routes>
