@@ -14,11 +14,11 @@ export default function postsReducer(state = initialState, action) {
       return { ...state, posts: payload, isLoading: false };
     case Actions.LOADING:
       return { ...state, notes: [], isLoading: true };
-    case Actions.REMOVE_NOTE:
-      const filtered = state.notes.filter(
-        (note) => note.id !== _.get(payload, 'id')
-      );
-      return { ...state, notes: filtered };
+    // case Actions.REMOVE_NOTE:
+    //   const filtered = state.notes.filter(
+    //     (note) => note.id !== _.get(payload, 'id')
+    //   );
+    //   return { ...state, notes: filtered };
     default:
       return state;
   }

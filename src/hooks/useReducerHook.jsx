@@ -23,6 +23,7 @@ export default function UseReducerTest() {
         return state;
     }
   };
+
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div>

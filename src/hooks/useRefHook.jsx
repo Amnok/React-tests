@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react';
 
 function useRefHook() {
   let Iref = useRef(null);
+
   useEffect(() => {
     Iref.current.focus();
   }, []);
+
   return (
     <div>
       <input

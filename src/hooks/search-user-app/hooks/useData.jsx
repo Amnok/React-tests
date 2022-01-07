@@ -9,7 +9,6 @@ export default function useData(type) {
         `https://jsonplaceholder.typicode.com/${type}`
       );
       setData(data);
-      console.log(data);
     }
     getData();
   }, [type]);
