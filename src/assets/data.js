@@ -70,6 +70,11 @@ export function getHooks() {
             "id": "8",
             "name": "Hooks-app",
             "url": "hooks-app"
+        },
+        {
+            "id": "9",
+            "name": "Hooks-Tests",
+            "url": "hooks-test"
         }
     ]
 }

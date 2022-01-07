@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function UseStateHook() {
   const [isVisible, setisVisible] = useState(false);
+
   const [data, setData] = useState({ name: 'test', state: 'Delhi', id: '10' });
 
   return (
@@ -25,7 +26,9 @@ export default function UseStateHook() {
         <div>User state: {data.state}</div>
         <div>User id: {data.id}</div>
         <button
-          onClick={() => setData({ name: 'something else', state: 'MUMBAI' })}
+          onClick={() =>
+            setData({ ...data, name: 'something else', state: 'MUMBAI' })
+          }
         >
           Change user details (complex object)
         </button>

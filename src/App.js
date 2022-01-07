@@ -10,7 +10,7 @@ import {
 import Home from './Home';
 
 function App() {
-  const [theme, setTheme] = useState(0)
+  const [theme, setTheme] = useState(0);
   return (
     <div className='container'>
       <UserContext.Provider value={{theme, setTheme}}>

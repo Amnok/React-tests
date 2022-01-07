@@ -11,8 +11,8 @@ function UseMemoHook() {
   };
   const isEven = () => {
     console.log('calculating even...');
-    // let i = 0;
-    // while (i < 2000000000) i++;
+    let i = 0;
+    while (i < 2000000000) i++;
     return firstCounter % 2 === 0 ? 'Even' : 'Odd';
   };
   const isEvenMemo = useMemo(() => isEven(), [firstCounter]);
