@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from './Input';
 import Item from './Item';
-import { addNote, getNotes, removeNote } from '../actions/actionCreator';
+import { addNote, removeNote } from '../actions/actionCreator';
 import _ from 'lodash';
 
 function ReduxSyncApp() {
   const dispatch = useDispatch();
   const { notes } = useSelector((state) => ({
-    notes: _.get(state, 'noteReducer.notes'),
+    notes: _.get(state, 'notesReducer.notes'),
   }));
   const state = useSelector((state) => state);
   console.log(state);

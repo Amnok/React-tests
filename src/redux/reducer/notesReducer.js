@@ -12,7 +12,7 @@ const initialState = {
     isLoading: false,
 }
 
-export default function noteReducer(state = initialState, action) {
+export default function notesReducer(state = initialState, action) {
     const { type, payload } = action;
         switch (type) {
             case Actions.ADD_NOTE:
