@@ -3,22 +3,22 @@ export function getModules() {
     return [
         {
             "id": "1",
-            "name": "Hooks",
+            "name": "Hooks 🪃",
             "url": "hooks"
         },
         {
             "id": "2",
-            "name": "Forms",
+            "name": "Forms 🖊️",
             "url": "forms"
         },
         {
             "id": "3",
-            "name": "Error Boundary",
+            "name": "Error Boundary ❕",
             "url": "error-boundary"
         },
         {
             "id": "4",
-            "name": "HOC's",
+            "name": "HOC's ",
             "url": "hoc"
         },
         {
