@@ -1,15 +1,19 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import ReduxSyncApp from './ReduxSyncApp';
-import ReduxAsyncApp from './ReduxAsyncApp';
-export default function ReduxRouter() {
+import { Link } from 'react-router-dom';
+import { getRedux } from '../assets/data';
+export default function Redux() {
+  const style = {
+    marginTop: '20px',
+  };
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<ReduxSyncApp />} />
-        <Route path="/async" element={<ReduxAsyncApp />} />
-      </Routes>
+    <div style={style}>
+      <ul>
+        {getRedux().map((val) => (
+          <li key={val.id}>
+            <Link to={val.url}>{val.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-  // return <div>hi</div>;
 }

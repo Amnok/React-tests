@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import UserContext from './context/userContext';
 import HookRouter from './hooks/hooks-router';
-import ReduxRouter from './redux';
+import ReduxRouter from './redux/reduxRouter';
 import CustomRedux from './custom-redux';
 import {
   Route,

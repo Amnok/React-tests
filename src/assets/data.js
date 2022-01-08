@@ -83,3 +83,23 @@ export function getHooks() {
         }
     ]
 }
+
+export function getRedux() {
+    return [
+        {
+            "id": "1",
+            "name": "Redux Sync",
+            "url": "redux-sync"
+        },
+        {
+            "id": "2",
+            "name": "Redux ASync",
+            "url": "redux-async"
+        },
+        {
+            "id": "3",
+            "name": "Custom Redux",
+            "url": "custom-redux"
+        },
+    ]
+}
