@@ -2,34 +2,32 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from './Input';
 import Item from './Item';
-import { addNote, removeNote, getPosts } from '../actions/actionCreator';
+import { getPosts, addPost } from '../store/posts';
 import _ from 'lodash';
 
 function ReduxASyncApp() {
   const dispatch = useDispatch();
-  const { notes, posts } = useSelector((state) => ({
-    notes: _.get(state, 'notes'),
+  const { posts, isLoading } = useSelector((state) => ({
     posts: _.get(state, 'postsReducer.posts'),
   }));
   function onAdd(text) {
-    const note = { id: notes.length + 1, text };
-    dispatch(addNote(note));
+    dispatch(addPost(text));
   }
   function handleRemove(noteToRemove) {
-    dispatch(removeNote(noteToRemove));
+    // dispatch(removeNote(noteToRemove));
   }
   useEffect(() => {
     dispatch(getPosts());
   }, []);
-  console.log('posts', posts);
-  if (!posts) return null;
+  console.log('here', { posts, isLoading });
+  if (isLoading) return <div>Loading...</div>;
   return (
     <div>
       <Input onAdd={onAdd} />
-      {posts.map((note) => (
+      {posts.map((post) => (
         <Item
-          key={_.get(note, 'id')}
-          note={note}
+          key={_.get(post, 'id')}
+          post={post}
           onAdd={onAdd}
           handleRemove={handleRemove}
         />

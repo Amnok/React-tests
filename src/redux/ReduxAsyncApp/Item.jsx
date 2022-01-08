@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-function Item({ note, handleRemove }) {
+function Item({ post, handleRemove }) {
   const style = {
     border: '1px solid grey',
     backgroundColor: '#efe3e3',
@@ -13,8 +13,8 @@ function Item({ note, handleRemove }) {
   };
   return (
     <div style={style}>
-      {_.get(note, 'title')}
-      <button onClick={() => handleRemove(note)}>Remove</button>
+      {_.get(post, 'title')}
+      <button onClick={() => handleRemove(post)}>Remove</button>
     </div>
   );
 }
