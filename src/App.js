@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import UserContext from './context/userContext';
 import HookRouter from './hooks/hooks-router';
 import ReduxRouter from './redux';
+import CustomRedux from './custom-redux';
 import {
   Route,
   Routes
@@ -18,6 +19,7 @@ function App() {
         <Routes>
         <Route path="/hooks/*" element={<HookRouter/>}/>
         <Route path="/redux/*" element={<ReduxRouter/>}/>
+        <Route path="/custom-redux/*" element={<CustomRedux/>}/>
         <Route path="/" element={<Home/>}/>
         </Routes>
       </div>
