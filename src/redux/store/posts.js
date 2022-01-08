@@ -10,62 +10,70 @@ export const LOADING = 'LOADING';
 
 async function fetchPosts() {
   return new Promise(async (resolve, reject) => {
-    const {data} = await axios.get('http://localhost:3006/posts');
+    const { data } = await axios.get('http://localhost:3006/posts');
     setTimeout(() => {
       resolve(data);
     }, 2000);
-  })
+  });
 }
 export const getPosts = () => {
-    return async (dispatch) => {
-        dispatch({type: LOADING, payload: []})
-        const data = await fetchPosts();
-        console.log("data", data);
-        dispatch({ type: GET_POSTS, payload: data})
-     }
-}
+  return async (dispatch) => {
+    dispatch({ type: LOADING, payload: [] });
+    const data = await fetchPosts();
+    dispatch({ type: GET_POSTS, payload: data });
+  };
+};
 
 export const addPost = (title) => {
-  return async(dispatch, getState) => {
+  return async (dispatch, getState) => {
     const state = getState();
     const posts = _.get(state, 'postsReducer.posts');
-    console.log("state in addpost", getState());
-    dispatch({type: LOADING, payload: []});
+    console.log('state in addpost', getState());
+    dispatch({ type: LOADING, payload: [] });
     const post = {
-      id: (posts.length +1).toString() ,
+      id: (posts.length + 1).toString(),
       title,
-    }
-    const {data} = await axios.post('http://localhost:3006/posts', post);
-    console.log("data in addpost", data);
-    dispatch({type: ADD_POST, payload: data});
-  }
-}
+    };
+    const { data } = await axios.post('http://localhost:3006/posts', post);
+    console.log('data in addpost', data);
+    dispatch({ type: ADD_POST, payload: data });
+  };
+};
+
+export const removePost = (post) => {
+  console.log('in remove', post);
+  return async (dispatch) => {
+    dispatch({ type: LOADING, payload: [] });
+    const { data } = await axios.delete(
+      `http://localhost:3006/posts/${post.id}`
+    );
+    console.log(data);
+    dispatch({ type: REMOVE_POST, payload: post });
+  };
+};
 
 // reducer
 
 const initialState = {
-    posts: [],
-    error: {},
-    isLoading: false,
-  };
-  
-  export default function postsReducer(state = initialState, action) {
-    const { type, payload } = action;
-    console.log("state in postsreducer", state);
-    switch (type) {
-      case ADD_POST:
-        return {...state, posts: [...state.posts, payload], isLoading: false}
-      case GET_POSTS:
-        return { ...state, posts: payload, isLoading: false };
-      case LOADING:
-        return { ...state, posts: [], isLoading: true };
-      // case Actions.REMOVE_NOTE:
-      //   const filtered = state.notes.filter(
-      //     (note) => note.id !== _.get(payload, 'id')
-      //   );
-      //   return { ...state, notes: filtered };
-      default:
-        return state;
-    }
+  posts: [],
+  error: {},
+  isLoading: false,
+};
+
+export default function postsReducer(state = initialState, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ADD_POST:
+      return { ...state, posts: [...state.posts, payload], isLoading: false };
+    case REMOVE_POST:
+      const updatedPosts = state.posts.filter((post) => post.id !== payload.id);
+      console.log({updatedPosts});
+      return { ...state, posts: updatedPosts, isLoading: false };
+    case GET_POSTS:
+      return { ...state, posts: payload, isLoading: false };
+    case LOADING:
+      return { ...state, isLoading: true };
+    default:
+      return state;
   }
-  
+}
