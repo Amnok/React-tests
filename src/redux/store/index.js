@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import notesReducer from './notes';
-import postsReducer from './posts';
+import moviesReducer from './movies';
 const store = createStore(
-  combineReducers({notesReducer, postsReducer}),
+  combineReducers({notesReducer, moviesReducer}),
     composeWithDevTools(
       applyMiddleware(thunk)
       // other store enhancers if any

@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from './Input';
 import Item from './Item';
-import { getPosts, addPost, removePost } from '../store/posts';
+import { getMovies, addMovie, removeMovie } from '../store/movies';
 import _ from 'lodash';
 import Skeleton from 'react-loading-skeleton';
 
 function ReduxASyncApp() {
   const dispatch = useDispatch();
 
-  const { posts, isLoading } = useSelector((state) => ({
-    posts: _.get(state, 'postsReducer.posts'),
-    isLoading: _.get(state, 'postsReducer.isLoading'),
+  const { movies, isLoading } = useSelector((state) => ({
+    movies: _.get(state, 'moviesReducer.movies'),
+    isLoading: _.get(state, 'moviesReducer.isLoading'),
   }));
 
   function onAdd(movie) {
@@ -19,22 +19,22 @@ function ReduxASyncApp() {
     if (!values.every((val) => val)) {
       alert('Please fill Out all Values');
     } else {
-      dispatch(addPost(movie));
+      dispatch(addMovie(movie));
     }
   }
   function handleRemove(postToRemove) {
-    dispatch(removePost(postToRemove));
+    dispatch(removeMovie(postToRemove));
   }
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getMovies());
   }, []);
 
-  console.log('here', { posts, isLoading });
+  console.log('here', { movies, isLoading });
   if (isLoading) return <Skeleton height={60} count={5} />;
   return (
     <div>
       <Input onAdd={onAdd} />
-      {posts.map((post) => (
+      {movies.map((post) => (
         <Item
           key={_.get(post, 'id')}
           post={post}
