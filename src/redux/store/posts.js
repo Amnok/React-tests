@@ -13,7 +13,7 @@ async function fetchPosts() {
     const { data } = await axios.get('http://localhost:3006/posts');
     setTimeout(() => {
       resolve(data);
-    }, 2000);
+    }, 0);
   });
 }
 export const getPosts = () => {
@@ -24,7 +24,7 @@ export const getPosts = () => {
   };
 };
 
-export const addPost = (title) => {
+export const addPost = (movie) => {
   return async (dispatch, getState) => {
     const state = getState();
     const posts = _.get(state, 'postsReducer.posts');
@@ -32,7 +32,7 @@ export const addPost = (title) => {
     dispatch({ type: LOADING, payload: [] });
     const post = {
       id: (posts.length + 1).toString(),
-      title,
+      ...movie
     };
     const { data } = await axios.post('http://localhost:3006/posts', post);
     console.log('data in addpost', data);
