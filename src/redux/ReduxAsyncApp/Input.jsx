@@ -12,60 +12,72 @@ function Input({ onAdd, editMovie }) {
     width: '50%',
     marginLeft: '25%',
   };
+  const [movie, setMovie] = useState({
+    name: '',
+    details: '',
+    genre: '',
+    rating: '',
+  });
 
   useEffect(() => {
     if (editMovie) {
-      const { name, detail, genre, rating } = editMovie;
-      setMovieName(name);
-      setMovieDetail(detail);
-      setMovieGenre(genre);
-      setMovieRating(rating);
+      const { name, details, genre, rating } = editMovie;
+      setMovie({
+        name,
+        details,
+        genre,
+        rating,
+      });
     }
   }, [editMovie]);
-  const [movieName, setMovieName] = useState('');
-  const [movieDetail, setMovieDetail] = useState('');
-  const [movieGenre, setMovieGenre] = useState('');
-  const [movieRating, setMovieRating] = useState('');
   const handleOnClick = () => {
-    const movie = {
+    const { name, details, genre, rating } = movie;
+    const tempMovie = {
       id: editMovie.id,
-      name: movieName,
-      detail: movieDetail,
-      genre: movieGenre,
-      rating: movieRating,
+      name,
+      details,
+      genre,
+      rating,
     };
     const isEdit = _.isEmpty(editMovie) ? false : true;
-    const _movie = !isEdit ? _.omit(movie, ['id']) : movie;
+    const _movie = !isEdit ? _.omit(tempMovie, ['id']) : tempMovie;
     onAdd(_movie, isEdit);
   };
   return (
     <div style={conatinerStyle}>
-      <label htmlFor="movieName">Movie Name</label>
+      <label htmlFor="name">Movie Name</label>
       <input
         type="text"
-        name="movieName"
-        id="movieName"
+        name="name"
+        id="name"
         placeholder="Enter Movie Name here"
-        value={movieName}
-        onChange={(e) => setMovieName(e.target.value)}
+        value={movie.name}
+        onChange={(e) =>
+          setMovie({ ...movie, [e.target.name]: e.target.value })
+        }
       />
 
-      <label htmlFor="movieDetails">Movie Details</label>
+      <label htmlFor="details">Movie Details</label>
       <textarea
-        id="movieDetails"
-        name="movieDetails"
+        id="details"
+        name="details"
         cols="30"
         rows="10"
-        value={movieDetail}
+        value={movie.details}
         placeholder="Enter Movie Details here"
-        onChange={(e) => setMovieDetail(e.target.value)}
+        onChange={(e) =>
+          setMovie({ ...movie, [e.target.name]: e.target.value })
+        }
       ></textarea>
 
       <label htmlFor="genre">Genre</label>
       <select
         id="genre"
-        onChange={(e) => setMovieGenre(e.target.value)}
-        value={movieGenre}
+        name="genre"
+        onChange={(e) =>
+          setMovie({ ...movie, [e.target.name]: e.target.value })
+        }
+        value={movie.genre}
       >
         <option value="Action">Action</option>
         <option value="Comedy">Comedy</option>
@@ -76,8 +88,11 @@ function Input({ onAdd, editMovie }) {
       <label htmlFor="rating">Rating</label>
       <select
         id="rating"
-        onChange={(e) => setMovieRating(e.target.value)}
-        value={movieRating}
+        name="rating"
+        onChange={(e) =>
+          setMovie({ ...movie, [e.target.name]: e.target.value })
+        }
+        value={movie.rating}
       >
         <option value="0">0</option>
         <option value="1">1</option>

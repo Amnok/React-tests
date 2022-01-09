@@ -38,7 +38,7 @@ function Item({ post, handleRemove, handleEdit }) {
           </div>
         </div>
       </div>
-      <div>{_.get(post, 'detail')}</div>
+      <div>{_.get(post, 'details')}</div>
     </div>
   );
 }
