@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import ReactStars from 'react-rating-stars-component';
 
-function Item({ post, handleRemove }) {
+function Item({ post, handleRemove, handleEdit }) {
   const style = {
     border: '1px solid grey',
     backgroundColor: '#c895e7',
@@ -27,7 +27,10 @@ function Item({ post, handleRemove }) {
           />
         </header>
         <div style={{ display: 'flex' }}>
-          <div style={{ marginRight: '10px', cursor: 'pointer' }}>
+          <div
+            onClick={() => handleEdit(post)}
+            style={{ marginRight: '10px', cursor: 'pointer' }}
+          >
             <FaEdit size={20} />
           </div>
           <div onClick={() => handleRemove(post)} style={{ cursor: 'pointer' }}>

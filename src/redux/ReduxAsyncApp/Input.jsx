@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import _ from 'lodash';
 
-function Input({ onAdd }) {
+function Input({ onAdd, editMovie }) {
+  console.log({ editMovie });
   const conatinerStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -10,18 +12,31 @@ function Input({ onAdd }) {
     width: '50%',
     marginLeft: '25%',
   };
+
+  useEffect(() => {
+    if (editMovie) {
+      const { name, detail, genre, rating } = editMovie;
+      setMovieName(name);
+      setMovieDetail(detail);
+      setMovieGenre(genre);
+      setMovieRating(rating);
+    }
+  }, [editMovie]);
   const [movieName, setMovieName] = useState('');
   const [movieDetail, setMovieDetail] = useState('');
   const [movieGenre, setMovieGenre] = useState('');
   const [movieRating, setMovieRating] = useState('');
   const handleOnClick = () => {
     const movie = {
+      id: editMovie.id,
       name: movieName,
       detail: movieDetail,
       genre: movieGenre,
       rating: movieRating,
     };
-    onAdd(movie);
+    const isEdit = _.isEmpty(editMovie) ? false : true;
+    const _movie = !isEdit ? _.omit(movie, ['id']) : movie;
+    onAdd(_movie, isEdit);
   };
   return (
     <div style={conatinerStyle}>
@@ -71,7 +86,9 @@ function Input({ onAdd }) {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <button onClick={handleOnClick}>Add</button>
+      <button onClick={handleOnClick}>
+        {_.isEmpty(editMovie) ? 'Add' : 'Update'}
+      </button>
     </div>
   );
 }
