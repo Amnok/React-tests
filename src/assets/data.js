@@ -98,8 +98,8 @@ export function getRedux() {
         },
         {
             "id": "3",
-            "name": "Custom Redux",
-            "url": "custom-redux"
+            "name": "Redux devtools",
+            "url": "redux-devtools"
         },
     ]
 }
