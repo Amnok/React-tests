@@ -1,6 +1,5 @@
 import axios from 'axios';
 import _ from 'lodash';
-import { createAction } from '@reduxjs/toolkit';
 // actions
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const REMOVE_MOVIE = 'REMOVE_MOVIE';
