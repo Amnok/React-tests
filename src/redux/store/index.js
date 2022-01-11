@@ -5,6 +5,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import notesReducer from './notes-devtools';
 import moviesReducer from './movies';
+import logger from './middleware/logger';
 
 // const store = createStore(
 //   combineReducers({notesReducer, moviesReducer}),
@@ -18,4 +19,4 @@ import moviesReducer from './movies';
 const reducer = {
   notesReducer, moviesReducer
 }
-export default configureStore({reducer});
+export default configureStore({reducer, middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger]});

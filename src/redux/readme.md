@@ -1,0 +1,12 @@
+-> functional Programming
+-> pure functions(easy to test)
+->immutability
+-> enforcing immutability (immer, immutablejs)
+-> redux architecture
+-> store, actions, reducer
+-> custom redux
+-> currying
+-> middleware
+-> custom middleware
+-> async redux
+-> redux devtools
