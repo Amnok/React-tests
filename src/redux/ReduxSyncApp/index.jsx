@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from './Input';
 import Item from './Item';
-import { addNote, removeNote } from '../store/notes';
+import { addNote, removeNote, getNotes } from '../store/notes-devtools';
 import _ from 'lodash';
 
 function ReduxSyncApp() {
@@ -10,6 +10,10 @@ function ReduxSyncApp() {
   const { notes } = useSelector((state) => ({
     notes: _.get(state, 'notesReducer.notes'),
   }));
+
+  useEffect(() => {
+    dispatch(getNotes());
+  }, []);
   function onAdd(text) {
     const note = { id: notes.length + 1, text };
     dispatch(addNote(note));

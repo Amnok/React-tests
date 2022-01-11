@@ -3,7 +3,7 @@
 // import { composeWithDevTools } from 'redux-devtools-extension';
 // import thunk from 'redux-thunk';
 import {configureStore} from '@reduxjs/toolkit';
-import notesReducer from './notes';
+import notesReducer from './notes-devtools';
 import moviesReducer from './movies';
 
 // const store = createStore(

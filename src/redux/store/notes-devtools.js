@@ -1,12 +1,7 @@
 import _ from 'lodash';
-import { createAction } from '@reduxjs/toolkit';
+import { createAction, createReducer, createSlice } from '@reduxjs/toolkit';
 
-// actions
-export const addNote = createAction('addNote');
-export const removeNote = createAction('removeNote');
-export const getNotes = createAction('getNotes');
 
-// reducer
 const initialState = {
     notes: [
             { id: 1, text: 'This is first Note' },
@@ -18,15 +13,36 @@ const initialState = {
     isLoading: false,
 }
 
-export default function notesReducer(state = initialState, action) {
-    const { type, payload } = action;
-        switch (type) {
-            case addNote.type:
-                return {...state,notes: [...state.notes, payload] };
-            case removeNote.type:
-                const filtered = state.notes.filter((note) => note.id !== _.get(payload, 'id'));
-                return {...state, notes: filtered};
-            default:
-                return state;
+// // actions
+// export const addNote = createAction('addNote');
+// export const removeNote = createAction('removeNote');
+// export const getNotes = createAction('getNotes');
+
+// // reducer
+// const notesreducer = createReducer(initialState, {
+//     [addNote.type]: (state, action)=> {
+//         state.notes.push(action.payload); 
+//     },
+//     [removeNote.type]: (state, action) => {
+//         state.notes = state.notes.filter((note) => note.id !== _.get(action, 'payload.id'));
+//     },
+// })
+
+const {reducer, actions} = createSlice({
+    name: 'notes',
+    initialState,
+    reducers: {
+        addNote: (state, action)=> {
+            state.notes.push(action.payload); 
+        },
+        removeNote: (state, action) => {
+            state.notes = state.notes.filter((note) => note.id !== _.get(action, 'payload.id'));
+        },
+        getNotes: (state, action) => {
+            // return state;
         }
-}
+    }
+
+})
+export const {addNote, removeNote, getNotes} = actions;
+export default reducer;
