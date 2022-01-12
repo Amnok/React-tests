@@ -1,4 +1,6 @@
-import createStore from './store';
+// import createStore from './custom-store';
+import store from './store/index';
+import { addBug, bugResolved, getBugs } from './store/bugs';
 const initialState = {
   value: 0,
 };
@@ -11,18 +13,26 @@ function reducer(state = initialState, action) {
       return { ...state, value: state.value - 1 };
     case 'RES':
       return state;
-
     default:
       break;
   }
 }
 
+// export default function CustomRedux() {
+//   const store = createStore(reducer);
+//   store.dispatch({ type: 'INC', payload: 5 });
+//   store.dispatch({ type: 'INC' });
+//   store.dispatch({ type: 'INC' });
+//   store.dispatch({ type: 'DEC' });
+//   console.log(store.getState());
+//   return <div>CustomRedux</div>;
+// }
+
 export default function CustomRedux() {
-  const store = createStore(reducer);
-  store.dispatch({ type: 'INC', payload: 5 });
-  store.dispatch({ type: 'INC' });
-  store.dispatch({ type: 'INC' });
-  store.dispatch({ type: 'DEC' });
+
+  store.dispatch(addBug({description: 'Bug 1' }));
+  store.dispatch(addBug({description: 'Bug 2' }));
+  store.dispatch(addBug({description: 'Bug 3' }));
   console.log(store.getState());
-  return <div>CustomRedux</div>;
+  return <div>Hello</div>;
 }
