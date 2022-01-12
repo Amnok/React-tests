@@ -1,32 +1,38 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSelector, createSlice} from '@reduxjs/toolkit';
 import _ from 'lodash';
 
 let lastId = 0;
-const initialState = {
-    bugs: [],
-    isLoading: false,
-    error: null,
-}
 const {actions, reducer} = createSlice({
     name: 'bugs',
-    initialState,
+    initialState: [],
     reducers: ({
-        addBug: (state, action) => {
-            state.bugs.push({
+        addBug: (bugs, action) => {
+            bugs.push({
                 id: ++lastId,
                 description: action.payload.description,
                 resolved: false
             })
         },
-        bugResolved: (state , action ) => {
-            const bugId = state.bugs.findIndex(bug => bug.id === action.payload.id);
-            state.bugs[bugId].resolved = true;
+        bugResolved: (bugs , action ) => {
+            const bugId = bugs.findIndex(bug => bug.id === action.payload.id);
+            bugs[bugId].resolved = true;
         },
-        getBugs: (state, action) => {
+        getBugs: (bugs, action) => {
 
+        },
+        bugAssignedToUser: (bugs, action) => {
+            const bugId = bugs.findIndex(bug => bug.id === action.payload.id);
+            bugs[bugId].userId = action.payload.userId;
         }
+        
     })
 })
 
-export const {addBug, bugResolved, getBugs} = actions;
+export const getBugsByUser = userId => 
+createSelector(
+    state => state,
+    bugs => bugs.filter(bug => bug.userId ===userId)
+)
+
+export const {addBug, bugResolved, getBugs, bugAssignedToUser} = actions;
 export default reducer;
