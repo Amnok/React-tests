@@ -25,11 +25,6 @@ export function getModules() {
             "id": "5",
             "name": "redux",
             "url": "redux"
-        },
-        {
-            "id": "6",
-            "name": "custom-redux",
-            "url": "custom-redux"
         }
     ]
 }
@@ -97,9 +92,9 @@ export function getRedux() {
             "url": "redux-async"
         },
         {
-            "id": "3",
-            "name": "Redux devtools",
-            "url": "redux-devtools"
-        },
+            "id": "6",
+            "name": "custom-redux",
+            "url": "custom-redux"
+        }
     ]
 }
