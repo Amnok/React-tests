@@ -5,6 +5,7 @@
 -> redux architecture
 -> store, actions, reducer
 -> custom redux
+
 -> currying
 -> middleware
 -> custom middleware

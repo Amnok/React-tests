@@ -63,7 +63,7 @@ export const editMovie = (movie) => {
 
 const initialState = {
   movies: [],
-  error: {},
+  error: null,
   isLoading: false,
 };
 

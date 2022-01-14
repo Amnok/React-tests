@@ -18,7 +18,7 @@ const initialState = {
 // export const removeNote = createAction('removeNote');
 // export const getNotes = createAction('getNotes');
 
-// // reducer
+// reducer
 // const notesreducer = createReducer(initialState, {
 //     [addNote.type]: (state, action)=> {
 //         state.notes.push(action.payload); 
