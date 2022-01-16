@@ -98,3 +98,18 @@ export function getRedux() {
         }
     ]
 }
+
+export function getErrorBoundary() {
+    return [
+        {
+            "id": "2",
+            "name": "custom-error-boundary",
+            "url": "error-boundary-custom"
+        },
+        {
+            "id": "1",
+            "name": "error-boundary-lib",
+            "url": "error-boundary-lib"
+        }, 
+    ]
+}
