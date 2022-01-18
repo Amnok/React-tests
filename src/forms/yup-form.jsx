@@ -11,6 +11,7 @@ export default function FormWithYup() {
   const initialValues = {
     firstName: '',
     lastName: '',
+    details: '',
     email: '',
   };
   const onSubmit = (values) => {

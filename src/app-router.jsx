@@ -7,6 +7,7 @@ const ReduxRouter = React.lazy(() => import('./redux/redux-router'));
 const ErrorBoundary = React.lazy(() =>
   import('./error-boundary/error-boundary-Router')
 );
+const Forms = React.lazy(() => import('./forms/forms-router'));
 
 export default function AppRouter() {
   return (
@@ -15,6 +16,7 @@ export default function AppRouter() {
         <Route path="/hooks/*" element={<HooksRouter />} />
         <Route path="/redux/*" element={<ReduxRouter />} />
         <Route path="/error-boundary/*" element={<ErrorBoundary />} />
+        <Route path="/forms/*" element={<Forms />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Suspense>

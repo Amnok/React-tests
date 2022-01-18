@@ -113,3 +113,18 @@ export function getErrorBoundary() {
         }, 
     ]
 }
+
+export function getForms() {
+    return [
+        {
+            "id": "1",
+            "name": "yup",
+            "url": "yup"
+        },
+        {
+            "id": "2",
+            "name": "formik",
+            "url": "formik"
+        }, 
+    ]
+}

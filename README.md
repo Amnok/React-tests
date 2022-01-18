@@ -1,8 +1,8 @@
 => Redux => Done
-=> Hooks =>
-=> Error Boundary =>
+=> Hooks => Done
+=> Error Boundary => Done
 => HOC's =>
 => Redux form
 => formik
 => React Query
-=> Code splitting
+=> Code splitting => Done
