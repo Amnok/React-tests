@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import _ from 'lodash';
@@ -23,9 +23,16 @@ export default function AllAboutFormik() {
   const onSubmit = (values) => {
     console.log('filter onSubmit', values);
   };
+  const initialValues = {
+    firstName: 'ak',
+    lastName: '',
+    language: '',
+    details: '',
+    phoneNumbers: ['343434'],
+  };
   return (
     <Formik
-      initialValues={user}
+      initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
       enableReinitialize={true}
@@ -61,6 +68,31 @@ export default function AllAboutFormik() {
             rows="10"
           />
           <ErrorMessage name="details" />
+        </div>
+        <div>
+          <label htmlFor="phoneNumbers"> Phone Numbers</label>
+          <FieldArray name="phoneNumbers">
+            {(fieldArrayProps) => {
+              const { push, remove, form } = fieldArrayProps;
+              const { values } = form;
+              const { phoneNumbers } = values;
+              return (
+                <div>
+                  <button type="button" onClick={() => push()}>
+                    +
+                  </button>
+                  {phoneNumbers.map((phoneNumber, index) => (
+                    <div key={index} style={{ display: 'flex', gap: '10px' }}>
+                      <Field name={`phoneNumbers[${index}]`} />
+                      <button type="button" onClick={() => remove(index)}>
+                        -
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              );
+            }}
+          </FieldArray>
         </div>
         <button type="submit">Submit </button>
       </Form>
