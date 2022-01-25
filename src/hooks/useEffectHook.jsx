@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 function UseEffectHook() {
   const [isVisible, setisVisible] = useState(false);
+  const [val, setVal] = useState(1);
   const [data, setData] = useState({ name: 'test', state: 'Delhi', id: '10' });
 
   useEffect(() => {
     console.log('this gets called only once');
   }, []);
+
+  useEffect(() => {
+    console.log('val changed');
+  }, [val]);
 
   useEffect(() => {
     console.log('this is called on dependency change');
@@ -23,6 +28,7 @@ function UseEffectHook() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h2 style={{ textAlign: 'center' }}>useEffectHook</h2>
+      <button onClick={() => setVal(1)}>Test val here</button>
       <div style={{ margin: '0 auto' }}>
         {isVisible && <div>I am visible Now !!!</div>}
         <button

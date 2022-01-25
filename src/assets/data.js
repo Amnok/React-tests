@@ -25,6 +25,11 @@ export function getModules() {
             "id": "5",
             "name": "redux",
             "url": "redux"
+        },
+        {
+            "id": "6",
+            "name": "memo",
+            "url": "memo"
         }
     ]
 }
