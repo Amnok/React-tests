@@ -30,6 +30,11 @@ export function getModules() {
             "id": "6",
             "name": "memo",
             "url": "memo"
+        },
+        {
+            "id": "7",
+            "name": "apps",
+            "url": "apps"
         }
     ]
 }
@@ -131,5 +136,15 @@ export function getForms() {
             "name": "formik",
             "url": "formik"
         }, 
+    ]
+}
+
+export function getApps() {
+    return [
+        {
+            "id": "1",
+            "name": "pokemon",
+            "url": "pokemon"
+        },
     ]
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function withTooltip(OriginalComponent) {
-  return class NewComponent extends React.Component {
+function withTooltip(OriginalComponent) {
+  class NewComponent extends React.Component {
     state = {
       showTooltip: false,
     };
@@ -19,5 +19,8 @@ export default function withTooltip(OriginalComponent) {
         </div>
       );
     }
-  };
+  }
+  return NewComponent;
 }
+
+export default withTooltip;
