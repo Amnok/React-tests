@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import Input from './Input';
 
 function useRefHook() {
   let Iref = useRef(null);
@@ -9,13 +10,7 @@ function useRefHook() {
 
   return (
     <div>
-      <input
-        type="text"
-        name="test"
-        id=""
-        placeholder="i will get focused on init"
-        ref={Iref}
-      />
+      <Input ref={Iref} a={2} />
     </div>
   );
 }
