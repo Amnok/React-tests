@@ -78,11 +78,31 @@ export function getHooks() {
         },
         {
             "id": "8",
+            "name": "useTransition",
+            "url": "use-transition"
+        },
+        {
+            "id": "9",
+            "name": "useDeferredValue",
+            "url": "use-deferred"
+        },
+        {
+            "id": "10",
+            "name": "useImperativeHandler",
+            "url": "use-imperative"
+        },
+        {
+            "id": "11",
+            "name": "useLayoutEffect",
+            "url": "use-layout-effect"
+        },
+        {
+            "id": "12",
             "name": "Hooks-app",
             "url": "hooks-app"
         },
         {
-            "id": "9",
+            "id": "13",
             "name": "Hooks-Tests",
             "url": "hooks-test"
         }
