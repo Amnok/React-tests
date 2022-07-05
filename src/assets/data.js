@@ -166,5 +166,10 @@ export function getApps() {
             "name": "pokemon",
             "url": "pokemon"
         },
+        {
+            "id": "2",
+            "name": "boxes",
+            "url": "boxes"
+        },
     ]
 }
